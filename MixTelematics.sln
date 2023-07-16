@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixTelematics", "MixTelematics\MixTelematics.csproj", "{B3A0259A-491B-469F-937C-F7BEB7818950}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixTelematics.Tests", "MixTelematics.Tests\MixTelematics.Tests.csproj", "{A65AADED-949B-4C8A-9C28-0B548E416A92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3A0259A-491B-469F-937C-F7BEB7818950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A0259A-491B-469F-937C-F7BEB7818950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A0259A-491B-469F-937C-F7BEB7818950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A0259A-491B-469F-937C-F7BEB7818950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65AADED-949B-4C8A-9C28-0B548E416A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65AADED-949B-4C8A-9C28-0B548E416A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65AADED-949B-4C8A-9C28-0B548E416A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65AADED-949B-4C8A-9C28-0B548E416A92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB277201-D623-472A-9965-298453F3886F}
+	EndGlobalSection
+EndGlobal

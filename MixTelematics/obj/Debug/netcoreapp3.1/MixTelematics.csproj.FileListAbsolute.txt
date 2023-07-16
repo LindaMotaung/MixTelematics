@@ -1,0 +1,14 @@
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.exe
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.deps.json
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.runtimeconfig.json
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.runtimeconfig.dev.json
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.dll
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\bin\Debug\netcoreapp3.1\MixTelematics.pdb
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.csproj.AssemblyReference.cache
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.AssemblyInfoInputs.cache
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.AssemblyInfo.cs
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.csproj.CoreCompileInputs.cache
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.dll
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.pdb
+C:\Users\lmotaun\source\repos\MixTelematics\MixTelematics\obj\Debug\netcoreapp3.1\MixTelematics.genruntimeconfig.cache
