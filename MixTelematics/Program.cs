@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
+using System.Threading.Tasks;
 using MixTelematics.Helpers;
 
 namespace MixTelematics
@@ -16,7 +15,7 @@ namespace MixTelematics
             var filePath = projectDirectory + @"\Data\VehiclePositions.dat";
 
             // Read the binary .dat file
-            var vehicleData = ReadVehicleData(filePath).ToList();
+            var vehicleData = ReadVehicleData(filePath).GetAwaiter().GetResult().ToList();
             var coordinatesData = Coordinates.ReturnCoordinatesData().ToList();
             var nearestVehiclePosition = FindNearestVehicle(coordinatesData, vehicleData);
 
@@ -27,7 +26,7 @@ namespace MixTelematics
             }
         }
 
-        public static IEnumerable<Vehicle> ReadVehicleData(string filePath)
+        public static async Task<IEnumerable<Vehicle>> ReadVehicleData(string filePath)
         {
             // Define the structure of a single record in the .dat file
             const int vehicleIdSize = 4;
@@ -37,29 +36,34 @@ namespace MixTelematics
             const int recordedTimeUtcSize = 8;
 
             // Read the binary .dat file
-            var fileBytes = File.ReadAllBytes(filePath);
+            var fileBytes = await File.ReadAllBytesAsync(filePath);
 
-            // Calculate the number of records based on the file size and record size
-            var numRecords = fileBytes.Length / (vehicleIdSize + vehicleRegistrationMaxSize + latitudeSize + longitudeSize + recordedTimeUtcSize);
-            var vehicleData = new Vehicle[numRecords];
-
-            using var reader = new BinaryReader(new MemoryStream(fileBytes));
-            for (var i = 0; i < numRecords; i++)
+            Vehicle[] vehicleData;
+            await using (var memoryStream = new MemoryStream(fileBytes))
             {
-                var data = new Vehicle
-                {
-                    // Read the fields of each record
-                    VehicleId = reader.ReadInt32(),
-                    VehicleRegistration = StringManipulation.ReadNullTerminatedString(reader, vehicleRegistrationMaxSize),
-                    Latitude = reader.ReadSingle(),
-                    Longitude = reader.ReadSingle(),
-                    RecordedTimeUtc = reader.ReadUInt64()
-                };
+                using var reader = new BinaryReader(memoryStream);
+                var numRecords = (int)(reader.BaseStream.Length / ((vehicleIdSize + vehicleRegistrationMaxSize + latitudeSize + longitudeSize + recordedTimeUtcSize) / 4));
+                vehicleData = new Vehicle[numRecords];
 
-                vehicleData[i] = data;
+                var i = 0;
+                while (reader.BaseStream.Position < reader.BaseStream.Length)
+                {
+                    var data = new Vehicle
+                    {
+                        // Read the fields of each record
+                        VehicleId = reader.ReadInt32(),
+                        VehicleRegistration = await StringManipulation.ReadNullTerminatedStringAsync(reader, vehicleRegistrationMaxSize),
+                        Latitude = reader.ReadSingle(),
+                        Longitude = reader.ReadSingle(),
+                        RecordedTimeUtc = reader.ReadUInt64()
+                    };
+
+                    vehicleData[i] = data;
+                    i++;
+                }
             }
 
-            return vehicleData;
+            return vehicleData.Where(data => data != null);
         }
 
         public static Dictionary<Coordinates, Vehicle> FindNearestVehicle(List<Coordinates> coordinates, List<Vehicle> vehicle)

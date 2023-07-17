@@ -36,7 +36,7 @@ namespace MixTelematics.Tests
             var filePath = _basePath + @"\emptyfile.dat";
 
             // Act
-            var vehicleData = Program.ReadVehicleData(filePath);
+            var vehicleData = Program.ReadVehicleData(filePath).GetAwaiter().GetResult();
 
             // Assert
             Assert.Empty(vehicleData);
@@ -53,7 +53,7 @@ namespace MixTelematics.Tests
             {
                 try
                 {
-                    Program.ReadVehicleData(filePath);
+                    Program.ReadVehicleData(filePath).GetAwaiter().GetResult();
                 }
                 catch (FileNotFoundException ex)
                 {

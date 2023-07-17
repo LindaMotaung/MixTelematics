@@ -1,21 +1,20 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 
 namespace MixTelematics.Helpers
 {
     public class StringManipulation
     {
-        public static string ReadNullTerminatedString(BinaryReader reader, int maxLength)
+        public static async Task<string> ReadNullTerminatedStringAsync(BinaryReader reader, int maxLength)
         {
-            var chars = new char[maxLength];
-
-            for (var i = 0; i < maxLength; i++)
+            await using MemoryStream memoryStream = new MemoryStream();
+            byte currentByte;
+            while ((currentByte = reader.ReadByte()) != 0 && memoryStream.Length < maxLength)
             {
-                chars[i] = reader.ReadChar();
-                if (chars[i] == '\0')
-                    break;
+                memoryStream.WriteByte(currentByte);
             }
 
-            return new string(chars).TrimEnd('\0');
+            return await Task.FromResult(System.Text.Encoding.UTF8.GetString(memoryStream.ToArray()));
         }
     }
 }

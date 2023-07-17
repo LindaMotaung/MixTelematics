@@ -23,7 +23,7 @@ namespace MixTelematics.Tests
             var filePath = _basePath + @"\VehiclePositions.dat";
 
             // Act
-            var vehicleData = Program.ReadVehicleData(filePath).ToList();
+            var vehicleData = Program.ReadVehicleData(filePath).GetAwaiter().GetResult().ToList();
 
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => Program.FindNearestVehicle(emptyCoordinatesData, vehicleData));
